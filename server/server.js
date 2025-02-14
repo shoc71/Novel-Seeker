@@ -13,9 +13,6 @@ const __dirname = path.dirname(__fileName);
 import dotenv from 'dotenv';
 import { connectDB } from './src/config/server.db.js'
 
-// CfpI0eNHoQmD55r2
-// mongodb+srv://supersonicwind6:KjERvGqopJgtbAdo@cluster001.becro.mongodb.net/product?retryWrites=true&w=majority&appName=Cluster001
-
 // middleware
 dotenv.config();
 const PORT = process.env.PORT || 3001;
