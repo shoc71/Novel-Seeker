@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/shoc71/project3/issues"
   },
-  "homepage": "https://github.com/shoc71/project3#readme"
+  "homepage": "https://github.com/shoc71/project3#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
 }
