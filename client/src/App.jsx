@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageNavBar from './components/pageNavBar';
-import pageFooter from './components/pageFooter';
+import PageFooter from './components/pageFooter';
 import viteLogo from '/vite.svg';
 import reactLogo from './assets/react.svg';
 
@@ -30,7 +30,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Footer />
+      <PageFooter />
     </>
   )
 }
