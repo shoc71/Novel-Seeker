@@ -1,13 +1,13 @@
 // imports
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+// import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const pageFooter = () => {
   return (
     <footer className="bg-dark text-light py-4 mt-5">
       <div className="container">
         <div className="row">
-          
+
           {/* Logo & Trademark */}
           <div className="col-md-4 text-center text-md-start mb-3">
             <h4 className="fw-bold">Ctrl Alt Elite -1</h4>
@@ -29,10 +29,10 @@ const pageFooter = () => {
           <div className="col-md-4 text-center text-md-end">
             <h5>Follow Us</h5>
             <div className="d-flex justify-content-center justify-content-md-end gap-3">
-              <a href="https://facebook.com" className="text-light"><Facebook size={20} /></a>
-              <a href="https://twitter.com" className="text-light"><Twitter size={20} /></a>
-              <a href="https://instagram.com" className="text-light"><Instagram size={20} /></a>
-              <a href="https://linkedin.com" className="text-light"><Linkedin size={20} /></a>
+              <a href="https://facebook.com" className="text-light"></a>
+              <a href="https://twitter.com" className="text-light"></a>
+              <a href="https://instagram.com" className="text-light"></a>
+              <a href="https://linkedin.com" className="text-light"></a>
             </div>
 
             {/* Newsletter Subscription */}
