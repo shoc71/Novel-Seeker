@@ -10,9 +10,6 @@ const __dirname = path.dirname(__fileName);
 // TODO: Uncomment the following code once you have built the queries and mutations in the client folder
 //import db from './config/connection.js'; //
 //import routes from './routes/index.js';
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { connectDB } from './src/config/server.db.js'
 
 // middleware
