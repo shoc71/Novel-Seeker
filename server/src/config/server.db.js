@@ -1,8 +1,4 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
-
-// middleware
-dotenv.config();
 
 // making connection for mongoose to connect mongoDB
 export const connectDB = async () => {
