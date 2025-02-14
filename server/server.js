@@ -7,14 +7,25 @@ import { fileURLToPath } from 'url';
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__fileName);
 // TODO: Uncomment the following code once you have built the queries and mutations in the client folder
-//import db from './config/connection.js';
+//import db from './config/connection.js'; //
 //import routes from './routes/index.js';
+import dotenv from 'dotenv';
 
+
+// issue here
+import connectDB from './src/' // this 
+//
+
+
+// CfpI0eNHoQmD55r2
+
+// middleware
+dotenv.config();
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
+app.use(express.json());
+
 
 if (process.env.NODE_ENV === 'production') {
     console.log("production")
@@ -25,4 +36,8 @@ if (process.env.NODE_ENV === 'production') {
     });
   }
 
-  app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
+  // server start-up
+  app.listen(PORT, () => {
+    connectDB();
+    console.log(`Now listening on http://localhost:${PORT}`)
+  });
