@@ -2,7 +2,7 @@
 import React from 'react';
 // import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
-const pageFooter = () => {
+const PageFooter = () => {
   return (
     <footer className="bg-dark text-light py-4 mt-5">
       <div className="container">
@@ -47,4 +47,4 @@ const pageFooter = () => {
   );
 };
 
-export default pageFooter
+export default PageFooter
