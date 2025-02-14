@@ -1,0 +1,11 @@
+/* DO NOT DELETE  I NEED THIS FOR DARKMODE AND LIGHT MDOE */
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode .navbar {
+  background-color: #1f1f1f;
+}
