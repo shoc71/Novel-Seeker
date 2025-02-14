@@ -1,3 +1,4 @@
+// imports
 import express from 'express';
 // TODO: Uncomment the following code once you have built the queries and mutations in the client folder
 // import { ApolloServer } from '@apollo/server';
@@ -10,14 +11,10 @@ const __dirname = path.dirname(__fileName);
 //import db from './config/connection.js'; //
 //import routes from './routes/index.js';
 import dotenv from 'dotenv';
-
-
-// issue here
-import connectDB from './src/' // this 
-//
-
+import { connectDB } from './src/config/server.db.js'
 
 // CfpI0eNHoQmD55r2
+// KjERvGqopJgtbAdo
 
 // middleware
 dotenv.config();
