@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import HomePage from './pages/HomePage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -28,7 +30,10 @@ function App() {
     }}>
       <NavBar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Routes>
-        <Route />
+        <Route path='/' element={< HomePage />} />
+
+        {/* Error paths for page */}
+        <Route path='*' element={ < ErrorPage/>} />
       </Routes>
       <Footer />
     </div>
