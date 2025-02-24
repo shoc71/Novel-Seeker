@@ -1,37 +1,42 @@
 import { useState } from 'react';
-import PageNavBar from './components/pageNavBar';
-import PageFooter from './components/pageFooter';
-import viteLogo from '/vite.svg';
-import reactLogo from './assets/react.svg';
+import { Route, Routes } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import HomePage from './pages/HomePage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => {
+      const newMode = !prevMode;
+      localStorage.setItem("darkMode", newMode); // Save to localStorage
+      return newMode;
+    });
+  };
 
   return (
-    <>
-      <PageNavBar />
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <PageFooter />
-    </>
+    <div style={{
+      backgroundColor: isDarkMode ? 'black' : 'white',
+      minHeight: '100vh',
+      color: isDarkMode ? 'white' : 'black'
+    }}>
+      <NavBar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <Routes>
+        <Route path='/' element={< HomePage />} />
+
+        {/* Error paths for page */}
+        <Route path='*' element={ < ErrorPage/>} />
+      </Routes>
+      <Footer />
+    </div>
   )
 }
 
