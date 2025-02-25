@@ -5,6 +5,7 @@ import express from 'express';
 // import { expressMiddleware } from '@apollo/server/express4';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import cors from 'cors';
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__fileName);
 // TODO: Uncomment the following code once you have built the queries and mutations in the client folder
