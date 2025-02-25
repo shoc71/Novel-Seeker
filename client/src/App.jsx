@@ -8,6 +8,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
+import BrowsePage from './pages/browse';
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -31,6 +33,7 @@ function App() {
       <NavBar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Routes>
         <Route path='/' element={< HomePage />} />
+        <Route path='/browse' element={< BrowsePage />} />
 
         {/* Error paths for page */}
         <Route path='*' element={ < ErrorPage/>} />
