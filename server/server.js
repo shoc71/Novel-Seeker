@@ -18,18 +18,22 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 
-// if (process.env.NODE_ENV === 'production') {
-//     console.log("production")
-//     app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "*", // Allows anything to connect
+  credentials: true
+}));
 
-//     app.get('*', (_req, res) => {
-//       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-//     });
-//   }
+if (process.env.NODE_ENV === 'production') {
+  console.log("production")
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
-  // server start-up
-  app.listen(PORT, () => {
-    connectDB();
-    console.log(`Now listening on http://localhost:${PORT}`)
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
   });
+}
+
+// server start-up
+app.listen(PORT, () => {
+  connectDB();
+  console.log(`Now listening on http://localhost:${PORT}`)
+});
