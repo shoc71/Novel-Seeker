@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/shoc71/project3#readme",
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5"
   }
 }
