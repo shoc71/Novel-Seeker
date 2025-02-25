@@ -30,8 +30,8 @@ function NavBar({ isDarkMode, toggleTheme }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/about" style={{ fontSize: '1.7rem' }}>
-                Book Link 1
+              <Link className="nav-link" to="/browse" style={{ fontSize: '1.7rem' }}>
+                Browse
               </Link>
             </li>
             <li className="nav-item">
