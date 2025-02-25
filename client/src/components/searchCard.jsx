@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Modal from "../pages/modal";
+
+import { useState } from "react";
+import modal from "../pages/modal";
 
 const SearchCard = ({ book }) => {
     const [show, setShow] = useState(false);
