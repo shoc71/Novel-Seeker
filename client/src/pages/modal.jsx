@@ -1,15 +1,14 @@
-import react from "react";
-const modal=({show,item,onClose})=>{
+// import react from "react";
+function modal ({show,item,onClose}) {
     if(!show){
         return null;
     }
     let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
 
     return(
-        <>
         <div className="overlay">
             <div className="overlay-innder">
-                <button className="close" onClick={onClose}><i class="fas fa-times"></i></button>
+                <button className="close" onClick={onClose}><i className="fas fa-times"></i></button>
                 <div className="inner-box">
                     <img src={thumbnail} alt=""/>
                     <div className="info">
@@ -22,7 +21,6 @@ const modal=({show,item,onClose})=>{
                 <h4 className="description">{item.volumeInfo.description}</h4>
             </div>
         </div>
-        </>
     )
-}
+};
 export default modal;

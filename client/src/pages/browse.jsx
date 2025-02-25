@@ -1,8 +1,8 @@
 import react, {useState} from "react";
-import searchCard from "../components/searchCard";
+
 import axios from "axios";
 
-const browse=()=>{
+const BrowsePage = () => {
     const [search,setSearch]=useState("");
     const [bookData,setData]=useState([]);
     const searchBook=(evt)=>{
@@ -13,7 +13,8 @@ const browse=()=>{
         }
     }
     return(
-        <><div className="header">
+        <>
+            <div className="header">
             <div className="row1">
                 <h1>Novel Seeker</h1>
             </div>
@@ -35,4 +36,4 @@ const browse=()=>{
             </>
     )
 }
-export default browse;
+export default BrowsePage;
