@@ -9,6 +9,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import BrowsePage from './pages/browse';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 
 function App() {
@@ -34,7 +36,8 @@ function App() {
       <Routes>
         <Route path='/' element={< HomePage />} />
         <Route path='/browse' element={< BrowsePage />} />
-
+        <Route path='/login' element={< LoginPage />} />
+        <Route path='/register' element={< RegisterPage />} />
         {/* Error paths for page */}
         <Route path='*' element={ < ErrorPage/>} />
       </Routes>

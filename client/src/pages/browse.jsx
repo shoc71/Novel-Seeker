@@ -1,5 +1,5 @@
 import react, {useState} from "react";
-
+import searchCard from "../components/searchCard";
 import axios from "axios";
 
 const BrowsePage = () => {
@@ -23,8 +23,8 @@ const BrowsePage = () => {
                 <div className="search">
                     <input type="text" placeholder="Enter the book name here" 
                     value={search} onChange={e=>setSearch(e.target.value)}
-                    onkeyPress={searchBook} />
-                    <button><i class="fas fa-search"></i></button>
+                    onKeyPress={searchBook} />
+                    <button><i className="fas fa-search"></i></button>
                 </div>
             </div>
 

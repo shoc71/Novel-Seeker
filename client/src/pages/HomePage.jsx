@@ -2,7 +2,7 @@
 import { Carousel } from 'react-bootstrap';
 import { Car_Libraries } from '../components/CarouselData';
 
-function HomePage() {
+const HomePage = () => {
   return (
     <div className="container py-5">
       <Carousel>
