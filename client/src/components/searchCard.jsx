@@ -25,7 +25,7 @@ const SearchCard = ({ book }) => {
                                     <p className="amount">&#8377;{amount}</p>
                                 </div>
                                 {/* Show Modal when clicked */}
-                                <Modal show={show} item={bookItem} onClose={() => setShow(false)} />
+                                <modal show={show} item={bookItem} onClose={() => setShow(false)} />
                             </div>
                         );
                     }
