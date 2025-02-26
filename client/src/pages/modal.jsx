@@ -1,6 +1,6 @@
-// import React from "react";
+import React from "react";
 
-function modal({ show, item, onClose }) {
+function Modal({ show, item, onClose }) {
     // Return null if the modal should not be shown
     if (!show || !item) {
         return null;
@@ -33,4 +33,4 @@ function modal({ show, item, onClose }) {
     );
 }
 
-export default modal;
+export default Modal;
