@@ -14,7 +14,7 @@ function NavBar({ isDarkMode, toggleTheme, isLoggedIn }) {
 
   const handleAuthClick = () => {
     // If not logged in, redirect to login page.
-    // Otherwise, you might choose to do nothing or log out.
+    // Otherwise, you might choose to do nothing or log out. test
     if (!isLoggedIn) {
       navigate('/login');
     }
@@ -50,13 +50,13 @@ function NavBar({ isDarkMode, toggleTheme, isLoggedIn }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/about" style={{ fontSize: '1.7rem' }}>
-                About
-              </Link>
+              <Link className="nav-link" to="/browse" style={{ fontSize: '1.7rem' }}>
+                Browse
+              </Link> 
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact-me" style={{ fontSize: '1.7rem' }}>
-                Contact Me
+                Book Link 2
               </Link>
             </li>
             {/* Auth Button */}
