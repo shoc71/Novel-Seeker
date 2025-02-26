@@ -1,12 +1,11 @@
-import React from "react";
+// import React from "react";
 
-function Modal({ show, item, onClose }) {
+function modal({ show, item, onClose }) {
     // Return null if the modal should not be shown
     if (!show || !item) {
         return null;
     }
 
-    // Check if item has the required properties
     const thumbnail = item.volumeInfo?.imageLinks?.smallThumbnail;
     const authors = item.volumeInfo?.authors?.join(', ') || 'Unknown author';
     const publisher = item.volumeInfo?.publisher || 'Unknown publisher';
@@ -34,4 +33,4 @@ function Modal({ show, item, onClose }) {
     );
 }
 
-export default Modal;
+export default modal;
