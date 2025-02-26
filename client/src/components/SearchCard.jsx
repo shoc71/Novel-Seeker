@@ -1,22 +1,19 @@
-
 import { useState } from "react";
-import modal from "../pages/modal";
+import Modal from "../pages/Modal";
 
 const SearchCard = ({ book }) => {
     const [show, setShow] = useState(false);
     const [bookItem, setItem] = useState();
 
-    console.log(book);
-
     return (
         <>
             {
                 book.map((item) => {
-                    let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-                    let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
+                    let thumbnail = item.volumeInfo?.imageLinks?.smallThumbnail;
+                    let amount = item.saleInfo?.listPrice?.amount;
 
-                   
-                    if (thumbnail !== undefined && amount !== undefined) {
+                    // Only show the card if both the thumbnail and amount are defined
+                    if (thumbnail && amount) {
                         return (
                             <div key={item.id || item.volumeInfo.title} className="card" onClick={() => { setShow(true); setItem(item); }}>
                                 <img src={thumbnail} alt="book image" />
@@ -24,14 +21,15 @@ const SearchCard = ({ book }) => {
                                     <h3 className="title">{item.volumeInfo.title}</h3>
                                     <p className="amount">&#8377;{amount}</p>
                                 </div>
-                                {/* Show Modal when clicked */}
-                                <modal show={show} item={bookItem} onClose={() => setShow(false)} />
                             </div>
                         );
                     }
                     return null;
                 })
             }
+
+            {/* Show Modal when clicked */}
+            {show && <Modal show={show} item={bookItem} onClose={() => setShow(false)} />}
         </>
     );
 };
