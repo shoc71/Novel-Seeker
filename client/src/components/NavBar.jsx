@@ -14,7 +14,7 @@ function NavBar({ isDarkMode, toggleTheme, isLoggedIn }) {
 
   const handleAuthClick = () => {
     // If not logged in, redirect to login page.
-    // Otherwise, you might choose to do nothing or log out.
+    // Otherwise, you might choose to do nothing or log out. test
     if (!isLoggedIn) {
       navigate('/login');
     }
@@ -52,7 +52,7 @@ function NavBar({ isDarkMode, toggleTheme, isLoggedIn }) {
             <li className="nav-item">
               <Link className="nav-link" to="/browse" style={{ fontSize: '1.7rem' }}>
                 Browse
-              </Link>
+              </Link> 
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact-me" style={{ fontSize: '1.7rem' }}>
