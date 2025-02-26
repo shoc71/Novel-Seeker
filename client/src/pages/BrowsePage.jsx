@@ -35,6 +35,7 @@ const BrowsePage = () => {
             <div className="container">
                 <SearchCard book={bookData} /> 
             </div>
+        </div>.
         </>
     );
 };
