@@ -9,13 +9,15 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const setToken = '' // get rid-off soon
+  const loginUser = '' // get rid-off soon
 
   const handleLogin = async () => {
     try {
       const res = await loginUser(email, password);
       if (res.success && res.data) {
         setToken(res.data);
-        navigate('/kanban');
+        navigate('/logged');
       } else {
         setError(res.message || 'Login failed');
       }
