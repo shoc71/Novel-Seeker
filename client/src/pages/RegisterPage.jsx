@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../utils/api';
+// import { registerUser } from '../utils/api';
 import { Button, Form, Alert, Container } from 'react-bootstrap';
 
 function RegisterPage() {
@@ -10,6 +10,7 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const registerUser = '' // get rid-off 
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
