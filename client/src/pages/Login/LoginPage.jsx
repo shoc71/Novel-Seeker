@@ -1,22 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { loginUser } from '../utils/api';
-// import { setToken } from '../utils/authService';
-import { Button, Form, Alert, Container, Row, Col } from 'react-bootstrap';
+import { loginUser } from '../utils/api';
+import { Button, Form, Alert, Container } from 'react-bootstrap';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const setToken = '' // get rid-off soon
-  const loginUser = '' // get rid-off soon
 
   const handleLogin = async () => {
     try {
-      const res = await loginUser(email, password);
-      if (res.success && res.data) {
-        setToken(res.data);
+      const res = await loginUser(emailOrUsername, password);
+      if (res.success && res.token) {
+        localStorage.setItem('token', res.token);
         navigate('/logged');
       } else {
         setError(res.message || 'Login failed');
@@ -31,13 +28,13 @@ function LoginPage() {
       <h2>Login</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form>
-        <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
+        <Form.Group controlId="emailOrUsername">
+          <Form.Label>Email or Username</Form.Label>
           <Form.Control 
-            type="email" 
-            placeholder="Enter email" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text" 
+            placeholder="Enter email or username" 
+            value={emailOrUsername}
+            onChange={(e) => setEmailOrUsername(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="password" className="mt-3">
@@ -49,16 +46,9 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Row className="mt-3">
-          <Col className='d-flex gap-2 mt-3 mb-3'>
-            <Button variant="primary" onClick={handleLogin}>
-              Login
-            </Button>
-            <Button variant="secondary" onClick={() => navigate('/register')}>
-              Register
-            </Button>
-          </Col>
-        </Row>
+        <Button variant="primary" className="mt-3" onClick={handleLogin}>
+          Login
+        </Button>
       </Form>
     </Container>
   );

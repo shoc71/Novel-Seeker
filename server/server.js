@@ -16,8 +16,11 @@ import { connectDB } from './src/config/server.db.js'
 // middleware
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/api', authRoutes);
 
 app.use(cors({
   origin: process.env.FRONTEND_URL || "*", // Allows anything to connect
@@ -33,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// server start-up
+// Server Start-up
 app.listen(PORT, () => {
   connectDB();
   console.log(`Now listening on http://localhost:${PORT}`)
