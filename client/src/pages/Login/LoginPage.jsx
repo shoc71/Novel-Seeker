@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../utils/api';
-import { Button, Form, Alert, Container } from 'react-bootstrap';
+import { Button, Form, Alert } from 'react-bootstrap';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -24,12 +24,12 @@ function LoginPage() {
   };
 
   return (
-    <Container className="mt-5">
-      <h2>Login</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <Form>
+    <div className="container-sm mt-5 p-5 min-vh-100">
+      <h2 className="display-2"><b>Login</b></h2>
+      <Form className='bg-primary rounded mt-5 p-5 '>
+        {error && <Alert variant="danger">{error}</Alert>}
         <Form.Group controlId="emailOrUsername">
-          <Form.Label>Email or Username</Form.Label>
+          <Form.Label className='text-white h4'>Email or Username</Form.Label>
           <Form.Control 
             type="text" 
             placeholder="Enter email or username" 
@@ -38,7 +38,7 @@ function LoginPage() {
           />
         </Form.Group>
         <Form.Group controlId="password" className="mt-3">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className='text-white h4'>Password</Form.Label>
           <Form.Control 
             type="password" 
             placeholder="Password" 
@@ -46,11 +46,16 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" className="mt-3" onClick={handleLogin}>
-          Login
-        </Button>
+        <div className='d-flex gap-2 mt-2 mb-3'>
+          <Button variant="primary" className="border border-dark mt-3 btn-lg" onClick={handleLogin}>
+            <b>Login</b>
+          </Button>
+          <Button variant="secondary" className="border border-dark mt-3 btn-lg" onClick={() => navigate('/register')}>
+            <b>Register</b>
+          </Button>
+        </div>
       </Form>
-    </Container>
+    </div>
   );
 };
 
