@@ -26,10 +26,9 @@ const HomePage = () => {
       </Carousel>
 
       <section className="mt-5">
-        <h2>About My Work</h2>
+        <h2>Famous Libraries from around the World!</h2>
         <p>
-          I am passionate about developing innovative solutions and creative projects. My portfolio
-          showcases a range of work—from dynamic web applications to engaging user experiences. Click on any project above to learn more.
+          We hope that through our app, Novel Seeker, we can help you find the book that you were looking for, or maybe even one you didnt know you wanted to read yet!
         </p>
       </section>
 
