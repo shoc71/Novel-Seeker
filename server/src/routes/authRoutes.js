@@ -1,7 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import serverUser from '../models/server.user';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     const { emailOrUsername, password } = req.body;
 
     try {
-        const user = await User.findOne({
+        const user = await serverUser.findOne({
             $or: [{ email: emailOrUsername }, { username: emailOrUsername }],
         });
 
@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
     const { firstname, lastname, username, email, password } = req.body;
 
     try {
-        const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+        const existingUser = await serverUser.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
             return res.status(400).json({ success: false, message: 'Email or username already exists' });
         }
