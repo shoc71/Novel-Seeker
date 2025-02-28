@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../utils/api';
+import { loginUser } from '../../utils/api';
 import { Button, Form, Alert, Container } from 'react-bootstrap';
 
 function LoginPage() {
