@@ -12,6 +12,7 @@ const __dirname = path.dirname(__fileName);
 //import db from './config/connection.js'; //
 //import routes from './routes/index.js';
 import { connectDB } from './src/config/server.db.js'
+import authRoutes from './src/routes/authRoutes.js'
 
 // middleware
 const PORT = process.env.PORT || 3001;
