@@ -1,7 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import serverUser from '../models/server.user';
+import serverUser from '../models/server.user.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
 
         res.json({ success: true, token });
     } catch (err) {
-        res.status(500).json({ success: false, message: 'Server error' });
+        res.status(500).json({ success: false, message: `Server error: ${err.message}` });
     }
 });
 
@@ -34,18 +34,29 @@ router.post('/register', async (req, res) => {
     const { firstname, lastname, username, email, password } = req.body;
 
     try {
-        const existingUser = await serverUser.findOne({ $or: [{ email }, { username }] });
+
+        if (!firstname || !lastname || !username || !email || !password) {
+            return res.status(400).json({ success: false, message: "All fields are required" });
+        }
+
+        const existingUser = await serverUser.findOne({
+            $or: [{ email }, { username }]
+        });
+
         if (existingUser) {
             return res.status(400).json({ success: false, message: 'Email or username already exists' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ firstname, lastname, username, email, password: hashedPassword });
+
+        const newUser = new serverUser({
+            firstname, lastname, username, email, password: hashedPassword
+        });
 
         await newUser.save();
-        res.json({ success: true, message: 'User registered successfully' });
+        res.status(201).json({ success: true, message: 'User registered successfully' });
     } catch (err) {
-        res.status(500).json({ success: false, message: 'Server error' });
+        res.status(500).json({ success: false, message: `Server error: ${err.message}` });
     }
 });
 

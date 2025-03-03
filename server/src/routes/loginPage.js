@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import serverUser from "../models/server.user";
+import serverUser from "../models/server.user.js";
 
 dotenv.config();
 const router = express.Router();
@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: "Server Error" });
+        res.status(500).json({ success: false, message: `Server error: ${error.message}` });
     }
 });
 
