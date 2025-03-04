@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "../pages/modal";
+import Modal from "./modal";
 
 const SearchCard = ({ book }) => {
     const [show, setShow] = useState(false);
@@ -12,14 +12,13 @@ const SearchCard = ({ book }) => {
                     let thumbnail = item.volumeInfo?.imageLinks?.smallThumbnail;
                     let amount = item.saleInfo?.listPrice?.amount;
 
-                    // Only show the card if both the thumbnail and amount are defined
                     if (thumbnail && amount) {
                         return (
                             <div key={item.id || item.volumeInfo.title} className="card" onClick={() => { setShow(true); setItem(item); }}>
                                 <img src={thumbnail} alt="book image" />
                                 <div className="bottom">
                                     <h3 className="title">{item.volumeInfo.title}</h3>
-                                    <p className="amount">&#8377;{amount}</p>
+                                    <p className="amount">&#36;{amount}</p>
                                 </div>
                             </div>
                         );
@@ -27,8 +26,6 @@ const SearchCard = ({ book }) => {
                     return null;
                 })
             }
-
-            {/* Show Modal when clicked */}
             {show && <Modal show={show} item={bookItem} onClose={() => setShow(false)} />}
         </>
     );

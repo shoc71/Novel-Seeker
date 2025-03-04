@@ -1,5 +1,5 @@
 import {useState} from "react";
-import SearchCard from "../components/SearchCard";
+import SearchCard from "./SearchCard";
 import axios from "axios";
 
 
@@ -17,12 +17,13 @@ const BrowsePage = () => {
 
     return (
         <>
-            <div className="header">
+        <div className="background">
+            {/* <div className="header">
                 <div className="row1">
                     <h1>Novel Seeker</h1>
-                </div>
+                </div> */}
                 <div className="row2">
-                    <h2>Search for a book:</h2>
+                    <h2>Search for a book or author:</h2>
                     <div className="search">
                         <input type="text" placeholder="Enter the book name here" 
                         value={search} onChange={e=>setSearch(e.target.value)}
@@ -35,6 +36,7 @@ const BrowsePage = () => {
                 <div className="container">
                     <SearchCard book={bookData} /> 
                 </div>
+            {/* </div> */}
             </div>
         </>
     );

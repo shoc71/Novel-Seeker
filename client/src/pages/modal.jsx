@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Modal({ show, item, onClose }) {
-    // Return null if the modal should not be shown
     if (!show || !item) {
         return null;
     }
+
+    const [showMore, setShowMore] = useState(false); 
 
     const thumbnail = item.volumeInfo?.imageLinks?.smallThumbnail;
     const authors = item.volumeInfo?.authors?.join(', ') || 'Unknown author';
@@ -12,6 +13,8 @@ function Modal({ show, item, onClose }) {
     const publishedDate = item.volumeInfo?.publishedDate || 'Unknown date';
     const description = item.volumeInfo?.description || 'No description available';
     const previewLink = item.volumeInfo?.previewLink || '#';
+
+    const truncatedDescription = description.length > 500 ? description.substring(0, 500) + '...' : description;
 
     return (
         <div className="overlay">
@@ -27,7 +30,14 @@ function Modal({ show, item, onClose }) {
                         <a href={previewLink}><button>More</button></a>
                     </div>
                 </div>
-                <h4 className="description">{description}</h4>
+                <h4 className="description">
+                    {showMore ? description : truncatedDescription}
+                </h4>
+                {description.length > 500 && (
+                    <button className="show-more-btn" onClick={() => setShowMore(!showMore)}>
+                        {showMore ? 'Show Less' : 'Show More'}
+                    </button>
+                )}
             </div>
         </div>
     );
