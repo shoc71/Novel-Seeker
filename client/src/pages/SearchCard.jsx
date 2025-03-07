@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Modal from "./modal";
+import Modal from "./Modal";
 
-const SearchCard = ({ book }) => {
+const SearchCard = ({ book, onSaveBook }) => { 
     const [show, setShow] = useState(false);
     const [bookItem, setItem] = useState();
 
@@ -26,7 +26,7 @@ const SearchCard = ({ book }) => {
                     return null;
                 })
             }
-            {show && <Modal show={show} item={bookItem} onClose={() => setShow(false)} />}
+            {show && <Modal show={show} item={bookItem} onClose={() => setShow(false)} onSaveBook={onSaveBook} />} 
         </>
     );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import "./styles/browse.css"; 
@@ -11,6 +11,7 @@ import ErrorPage from './utils/ErrorPage';
 import BrowsePage from './pages/BrowsePage';
 import LoginPage from './pages/Login/LoginPage';
 import RegisterPage from './pages/Register/RegisterPage';
+import BookshelfPage from './pages/BookshelfPage';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path='/' element={< HomePage />} />
         <Route path='/browse' element={< BrowsePage />} />
+        <Route path='/bookshelf' element={< BookshelfPage />} />
         <Route path='/login' element={< LoginPage />} />
         <Route path='/register' element={< RegisterPage />} />
         {/* Error paths for page */}
