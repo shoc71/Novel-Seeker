@@ -1,45 +1,35 @@
 // imports
+import express from "express";
 import dotenv from 'dotenv';
-dotenv.config();
-import express from 'express';
-// TODO: Uncomment the following code once you have built the queries and mutations in the client folder
-// import { ApolloServer } from '@apollo/server';
-// import { expressMiddleware } from '@apollo/server/express4';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import cors from 'cors';
-const __fileName = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__fileName);
-// TODO: Uncomment the following code once you have built the queries and mutations in the client folder
-//import routes from './routes/index.js';
-import { connectDB } from './src/config/server.db.js'
-import authRoutes from './src/routes/authRoutes.js'
+import cookieParser from "cookie-parser";
+
+import { connectDB } from "./config/db.js";
+
+import authRoutes from './routes/authRoute.js'
+import productRoutes from "./routes/productRoute.js";
+import cartRoutes from "./routes/cartRoute.js"
+import couponRoutes from "./routes/couponRoute.js"
+import paymentRoutes from "./routes/paymentRoute.js"
+import analyticsRoutes from "./routes/analyticsRoute.js"
 
 // middleware
-const PORT = process.env.PORT || 3001;
+dotenv.config();
 const app = express();
+app.use(express.json()); // allows you to parse JSON data / body of request
+app.use(cookieParser());
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const PORT = process.env.PORT || 5001;
 
-app.use('/api', authRoutes);
+// routes
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/coupons", couponRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL, // Allows anything to connect
-  credentials: true
-}));
-
-if (process.env.NODE_ENV === 'production') {
-  console.log("production")
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-
-  app.get('*', (_req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
-}
-
-// Server Start-up
+// server starter
 app.listen(PORT, () => {
   connectDB();
-  console.log(`Now listening on http://localhost:${PORT}`)
-});
+  console.log(`Server is live on http://localhost:${PORT}`)
+})
