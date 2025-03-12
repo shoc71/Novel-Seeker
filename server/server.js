@@ -1,4 +1,6 @@
 // imports
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 // TODO: Uncomment the following code once you have built the queries and mutations in the client folder
 // import { ApolloServer } from '@apollo/server';
