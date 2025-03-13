@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "./modal";
 
 const SearchCard = ({ book, onSaveBook }) => { 
     const [show, setShow] = useState(false);
