@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
-import axiosInstance from "../config/axois";
+import axios from "../config/axois";
 
 export const useProductStore = create((set) => ({
     products: [],
@@ -10,8 +10,9 @@ export const useProductStore = create((set) => ({
     createProduct: async (productData) => {
         set({ loading: true });
         try {
-            const res = await axiosInstance.post("/products", productData);
-            console.log("Created product response:", res.data);
+            // console.log("productData: ", productData)
+            const res = await axios.post("/products", productData);
+            // console.log("Created product response:", res.data);
             set((prevState) => ({
                 products: [...prevState.products, res.data],
                 loading: false,
@@ -24,8 +25,9 @@ export const useProductStore = create((set) => ({
     fetchAllProducts: async () => {
         set({ loading: true });
         try {
-            const response = await axiosInstance.get("/products");
-            set({ products: response.data.products, loading: false });
+            // console.log("fetchallproduct: ", response)
+            const response = await axios.get("/products");
+            set({ products: response.data.data.products, loading: false });
         } catch (error) {
             set({ error: "Failed to fetch products", loading: false });
             toast.error(error.response.data.error || "Failed to fetch products");
@@ -34,8 +36,9 @@ export const useProductStore = create((set) => ({
     fetchProductsByCategory: async (category) => {
         set({ loading: true });
         try {
-            const response = await axiosInstance.get(`/products/category/${category}`);
-            set({ products: response.data.products, loading: false });
+            const response = await axios.get(`/products/category/${category}`);
+            set({ products: response.data.data, loading: false });
+            console.log("fetchallproduct: ", response.data.data)
         } catch (error) {
             set({ error: "Failed to fetch products", loading: false });
             toast.error(error.response.data.error || "Failed to fetch products");
@@ -44,7 +47,7 @@ export const useProductStore = create((set) => ({
     deleteProduct: async (productId) => {
         set({ loading: true });
         try {
-            await axiosInstance.delete(`/products/${productId}`);
+            await axios.delete(`/products/${productId}`);
             set((prevProducts) => ({
                 products: prevProducts.products.filter((product) => product._id !== productId),
                 loading: false,
@@ -57,7 +60,7 @@ export const useProductStore = create((set) => ({
     toggleFeaturedProduct: async (productId) => {
         set({ loading: true });
         try {
-            const response = await axiosInstance.patch(`/products/${productId}`);
+            const response = await axios.patch(`/products/${productId}`);
             // this will update the isFeatured prop of the product
             set((prevProducts) => ({
                 products: prevProducts.products.map((product) =>
@@ -73,7 +76,7 @@ export const useProductStore = create((set) => ({
     fetchFeaturedProducts: async () => {
         set({ loading: true });
         try {
-            const response = await axiosInstance.get("/products/featured");
+            const response = await axios.get("/products/featured");
             set({ products: response.data, loading: false });
         } catch (error) {
             set({ error: "Failed to fetch products", loading: false });
