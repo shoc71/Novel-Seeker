@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "./modal";
 import axios from "axios";
 import SearchCard from "./SearchCard"; 
 import { Link } from 'react-router-dom';
