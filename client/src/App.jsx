@@ -10,6 +10,10 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import AdminPage from "./pages/AdminPage";
 import BrowsePage from "./pages/BrowsePage";
 import BookshelfPage from "./pages/BookshelfPage";
+import CategoryPage from "./pages/CategoryPage";
+import CartPage from "./pages/CartPage";
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
+import PurchaseCancelPage from "./pages/PurchaseCancelPage";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
@@ -38,12 +42,24 @@ function App() {
           <Route path="/browse" element={<BrowsePage />} />
           <Route path="/bookshelf" element={<BookshelfPage />} />
           <Route
+            path="/cart"
+            element={user ? <CartPage /> : <Navigate to="/login" />}
+          />
+          <Route
             path="/login"
             element={!user ? <LoginPage /> : <Navigate to="/" />}
           />
           <Route
             path="/signup"
             element={!user ? <SignUpPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/purchase-success"
+            element={user ? <PurchaseSuccessPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/purchase-cancel"
+            element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />}
           />
           <Route
             path="/secret-dashboard"
@@ -55,6 +71,7 @@ function App() {
               )
             }
           />
+          <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
       <Toaster />

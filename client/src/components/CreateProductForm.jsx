@@ -4,13 +4,13 @@ import { PlusCircle, Upload, Loader } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 
 const categories = [
-  "Children Books",
-  "Comic books",
-  "Fable",
-  "History",
-  "Novel",
-  "Romance",
-  "Self Help",
+  "children-books",
+  "comic-books",
+  "fable",
+  "history",
+  "novel",
+  "romance",
+  "self-help",
 ];
 
 const CreateProductForm = () => {
