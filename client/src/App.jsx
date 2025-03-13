@@ -1,51 +1,65 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import "./styles/browse.css"; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import HomePage from './pages/HomePage';
-import ErrorPage from './utils/ErrorPage';
-import BrowsePage from './pages/BrowsePage';
-import LoginPage from './pages/Login/LoginPage';
-import RegisterPage from './pages/Register/RegisterPage';
-import BookshelfPage from './pages/BookshelfPage';
-
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import NavBar from "./components/NavBar";
+import { Toaster } from "react-hot-toast";
+import { useUserStore } from "./stores/useUserStore";
+import { useEffect } from "react";
+import LoadingSpinner from "./components/LoadingSpinner";
+import AdminPage from "./pages/AdminPage";
+import BrowsePage from "./pages/BrowsePage";
+import BookshelfPage from "./pages/BookshelfPage";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true";
-  });
+  const { user, checkAuth, checkingAuth } = useUserStore();
 
-  const toggleTheme = () => {
-    setIsDarkMode(prevMode => {
-      const newMode = !prevMode;
-      localStorage.setItem("darkMode", newMode); // Save to localStorage
-      return newMode;
-    });
-  };
+  // console.log(`App.jsx: ${user?.data.role}`);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]); // if logged in, immediate check and redirect to homepage
+
+  if (checkingAuth) return <LoadingSpinner />;
 
   return (
-    <div style={{
-      backgroundColor: isDarkMode ? 'black' : 'white',
-      minHeight: '100vh',
-      color: isDarkMode ? 'white' : 'black'
-    }}>
-      <NavBar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <Routes>
-        <Route path='/' element={< HomePage />} />
-        <Route path='/browse' element={< BrowsePage />} />
-        <Route path='/bookshelf' element={< BookshelfPage />} />
-        <Route path='/login' element={< LoginPage />} />
-        <Route path='/register' element={< RegisterPage />} />
-        {/* Error paths for page */}
-        <Route path='*' element={ < ErrorPage/>} />
-      </Routes>
-      <Footer />
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.3)_0%,rgba(10,80,60,0.2)_45%,rgba(0,0,0,0.1)_100%)]" />
+        </div>
+      </div>
+
+      <div className="relative z-50 pt-20">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/browse" element={<BrowsePage />} />
+          <Route path="/bookshelf" element={<BookshelfPage />} />
+          <Route
+            path="/login"
+            element={!user ? <LoginPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/signup"
+            element={!user ? <SignUpPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/secret-dashboard"
+            element={
+              user?.data.role === "admin" ? (
+                <AdminPage />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+        </Routes>
+      </div>
+      <Toaster />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
