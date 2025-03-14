@@ -45,6 +45,8 @@ Youtube Tutorial: [Click Unlisted Video Here](#)
 
 Deployed Webpage: https://novel-seeker.onrender.com/
 
+Backup Webpage: https://novel-seeker-ef3f.onrender.com/
+
 GitHub Repo: https://github.com/shoc71/Novel-Seeker/
 
 GitHub Profile: [shoc71](https://github.com/shoc71)
