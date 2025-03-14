@@ -1,6 +1,7 @@
 # Novel Seeker
-written by @CourtneyPonder,
-@rosserw, @shoc71.
+written by @CourtneyPonder, @rosserw, @shoc71.
+
+![Novel Seeker](https://github.com/user-attachments/assets/1abacd32-8002-4f08-844d-2f411cbf35fc)
 
 ## Description
 Personal Library saver and recommender based on your interests and tags. 
