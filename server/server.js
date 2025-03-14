@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
 import cloudinary from "./config/cloudinary.js";
 import path from "path";
+import cors from "cors";
+
 
 import { connectDB } from "./config/db.js";
 
@@ -19,6 +21,7 @@ dotenv.config();
 const app = express();
 app.use(express.json({ limit: "10mb" })); // allows you to parse JSON data / body of request
 app.use(cookieParser());
+app.use(cors({ origin: "*" }));
 
 const __dirname = path.resolve()
 const PORT = process.env.PORT || 5001;

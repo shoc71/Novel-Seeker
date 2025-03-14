@@ -1,39 +1,47 @@
 {
-  "name": "e-com-store-private-test",
+  "name": "profile3",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server/server.js",
-    "start": "node server/server.js",
+    "dev": "NODE_ENV=development nodemon server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shoc71/e-com-store-private-test.git"
+    "url": "git+https://github.com/shoc71/profile3.git"
+  },
+  "engines": {
+  "node": ">=20",
+  "npm": ">=9"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/shoc71/e-com-store-private-test/issues"
+    "url": "https://github.com/shoc71/profile3/issues"
   },
-  "homepage": "https://github.com/shoc71/e-com-store-private-test#readme",
+  "homepage": "https://github.com/shoc71/profile3#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.6.0",
     "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "ioredis": "^5.6.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1",
+    "path": "^0.12.7",
     "stripe": "^17.7.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "nodemon": "^3.1.9",
+    "vite": "^6.2.1"
     "rollup": "^4.35.0"
   }
 }
